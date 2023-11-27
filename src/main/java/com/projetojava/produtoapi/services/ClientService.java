@@ -1,5 +1,6 @@
 package com.projetojava.produtoapi.services;
 
+import com.projetojava.produtoapi.dtos.CepResultDTO;
 import com.projetojava.produtoapi.models.ClientModel;
 import com.projetojava.produtoapi.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,17 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private CepService cepService;
+
     public ClientModel saveClient(ClientModel client) {
-        return clientRepository.save(client);
+        ClientModel savedClient = clientRepository.save(client);
+        CepResultDTO cepResult = cepService.getCepResultViaCep(client.getCep());
+        savedClient.setLogradouro(cepResult.getLogradouro());
+        savedClient.setBairro(cepResult.getBairro());
+        savedClient.setLocalidade(cepResult.getLocalidade());
+        savedClient.setUf(cepResult.getUf());
+        return clientRepository.save(savedClient);
     }
 
     public List<ClientModel> getAllClients() {

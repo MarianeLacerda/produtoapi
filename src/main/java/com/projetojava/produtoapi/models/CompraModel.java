@@ -2,6 +2,7 @@ package com.projetojava.produtoapi.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -16,6 +17,14 @@ public class CompraModel {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private ClientModel client;
+
+    @ManyToMany
+    @JoinTable(
+            name = "compra_produto",
+            joinColumns = @JoinColumn(name = "compra_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id")
+    )
+    private List<ProductModel> products;
 
     public int getQuantidade() {
         return quantidade;

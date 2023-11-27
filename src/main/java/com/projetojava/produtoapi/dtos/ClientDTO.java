@@ -4,7 +4,6 @@ public class ClientDTO {
     private String nome;
     private String cep;
 
-    private String compra;
 
     // Construtores, getters e setters
 
@@ -25,13 +24,6 @@ public class ClientDTO {
         this.cep = cep;
     }
 
-    public String getCompra() {
-        return compra;
-    }
-
-    public void setCompra(String compra) {
-        this.compra = compra;
-    }
 
     // Outros getters e setters para os campos adicionais, se houver
 }
