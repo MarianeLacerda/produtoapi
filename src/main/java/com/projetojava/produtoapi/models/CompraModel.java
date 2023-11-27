@@ -24,7 +24,7 @@ public class CompraModel {
             joinColumns = @JoinColumn(name = "compra_id"),
             inverseJoinColumns = @JoinColumn(name = "produto_id")
     )
-    private List<ProductModel> products;
+    private List<ProductModel> produtos;
 
     public int getQuantidade() {
         return quantidade;

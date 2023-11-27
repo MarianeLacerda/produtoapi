@@ -25,6 +25,7 @@ public class ClientService {
         savedClient.setBairro(cepResult.getBairro());
         savedClient.setLocalidade(cepResult.getLocalidade());
         savedClient.setUf(cepResult.getUf());
+
         return clientRepository.save(savedClient);
     }
 
