@@ -2,10 +2,13 @@ package com.projetojava.produtoapi.services;
 
 import com.projetojava.produtoapi.dtos.CepResultDTO;
 import com.projetojava.produtoapi.models.ClientModel;
+import com.projetojava.produtoapi.models.CompraModel;
+import com.projetojava.produtoapi.models.ProductModel;
 import com.projetojava.produtoapi.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -17,6 +20,9 @@ public class ClientService {
 
     @Autowired
     private CepService cepService;
+
+    @Autowired
+    private ProductService productService;
 
     public ClientModel saveClient(ClientModel client) {
         ClientModel savedClient = clientRepository.save(client);

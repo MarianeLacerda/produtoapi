@@ -11,20 +11,15 @@ public class CompraModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idCompra;
 
-    private UUID idProduto;
     private int quantidade;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "idClient")
     private ClientModel client;
 
-    @ManyToMany
-    @JoinTable(
-            name = "compra_produto",
-            joinColumns = @JoinColumn(name = "compra_id"),
-            inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
-    private List<ProductModel> produtos;
+    @ManyToOne
+    @JoinColumn(name = "idProduto")
+    private ProductModel product;
 
     public int getQuantidade() {
         return quantidade;
@@ -42,19 +37,19 @@ public class CompraModel {
         this.idCompra = idCompra;
     }
 
-    public UUID getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(UUID idProduto) {
-        this.idProduto = idProduto;
-    }
-
     public ClientModel getClient() {
         return client;
     }
 
     public void setClient(ClientModel client) {
         this.client = client;
+    }
+
+    public ProductModel getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductModel product) {
+        this.product = product;
     }
 }

@@ -22,9 +22,8 @@ public class ClientModel {
 
     private String uf;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<CompraModel> compras;
-
 
     public String getNome() {
         return nome;
