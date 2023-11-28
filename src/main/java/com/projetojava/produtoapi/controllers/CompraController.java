@@ -37,7 +37,6 @@ public class CompraController {
     @PostMapping
     public ResponseEntity<CompraModel> createCompra(@RequestBody CompraDTO compraDTO) {
         CompraModel compraModel = new CompraModel();
-        //  BeanUtils.copyProperties(compraDTO, compraModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(compraService.createCompra(compraDTO));
     }
 
